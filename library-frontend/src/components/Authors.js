@@ -1,12 +1,13 @@
 import React from 'react'
+import AuthorEdit from './AuthorEdit'
 import { useQuery } from '@apollo/client'
 
 import { ALL_AUTHORS } from '../queries'
 
-const Authors = (props) => {
+const Authors = ({ show, setError }) => {
   const result = useQuery(ALL_AUTHORS)
   
-  if (!props.show) {
+  if (!show) {
     return null
   }
 
@@ -15,6 +16,9 @@ const Authors = (props) => {
   }
 
   const authors = result.data.allAuthors
+  const options = authors.map(a => ({ value: a.name, label: a.name }))
+  console.log('options', options)
+  
 
   return (
     <div>
@@ -39,7 +43,7 @@ const Authors = (props) => {
           )}
         </tbody>
       </table>
-
+      <AuthorEdit setError={setError} options={options}/>
     </div>
   )
 }
