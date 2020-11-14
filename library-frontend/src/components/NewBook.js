@@ -13,6 +13,7 @@ const NewBook = ({ show, setError }) => {
     refetchQueries: [{ query: ALL_AUTHORS }, { query: ALL_BOOKS }],
     onError: (error) => {
       setError(error.graphQLErrors[0].message)
+      console.log(error)
     }
   })
 

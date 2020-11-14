@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client'
 
 import { ALL_AUTHORS } from '../queries'
 
-const Authors = ({ show, setError }) => {
+const Authors = ({ show, setError, token }) => {
   const result = useQuery(ALL_AUTHORS)
   
   if (!show) {
@@ -19,7 +19,6 @@ const Authors = ({ show, setError }) => {
   const options = authors.map(a => ({ value: a.name, label: a.name }))
   console.log('options', options)
   
-
   return (
     <div>
       <h2>authors</h2>
@@ -43,7 +42,7 @@ const Authors = ({ show, setError }) => {
           )}
         </tbody>
       </table>
-      <AuthorEdit setError={setError} options={options}/>
+      {token ? <AuthorEdit setError={setError} options={options}/> : null}
     </div>
   )
 }

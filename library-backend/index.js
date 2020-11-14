@@ -9,27 +9,6 @@ const User = require('./models/user')
 
 const JWT_SECRET = process.env.SECRET
 
-// const auth1 = new Author({
-//   name: 'Robert Martin',
-//   born: 1952
-// })
-
-// auth1.save().then(result => {
-//   console.log('author saved!')
-// })
-
-// const book1 = new Book({
-//   title: 'Clean Code',
-//   published: 2008,
-//   author: '5f873a854e67f504344c83b4',
-//   genres: ['refactoring']
-// })
-
-// book1.save().then(result => {
-//   console.log('book saved!')
-// })
-
-
 const MONGODB_URI = process.env.MONGODB_URI
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })

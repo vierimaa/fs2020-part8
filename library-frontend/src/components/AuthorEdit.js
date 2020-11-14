@@ -37,9 +37,10 @@ const AuthorEdit = ({ setError, options }) => {
         <div>
           author name
           <Select
+            placeholder="Select author..."
             options={options}
-            value={name}
             onChange={({ label }) => setName(label)}
+            value={name ? { label: name, value: name.toLowerCase() } : null}
           />
         </div>
         <div>
