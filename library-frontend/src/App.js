@@ -4,6 +4,7 @@ import Authors from './components/Authors'
 import Books from './components/Books'
 import NewBook from './components/NewBook'
 import LoginForm from './components/LoginForm'
+import Recommend from './components/Recommend'
 
 const Notify = ({errorMessage}) => {
   if ( !errorMessage ) {
@@ -33,7 +34,7 @@ const App = () => {
   const logout = () => {
     setToken(null)
     localStorage.clear()
-    client.resetStore()
+    client.clearStore()
     setPage('authors')
   }
 
@@ -43,6 +44,7 @@ const App = () => {
         <button onClick={() => setPage('authors')}>authors</button>
         <button onClick={() => setPage('books')}>books</button>
         {token ? <button onClick={() => setPage('add')}>add book</button> : null}
+        {token ? <button onClick={() => setPage('recommend')}>recommendations</button> : null}
         {token ? <button onClick={logout}>logout</button> : <button onClick={() => setPage('login')}>login</button>}
       </div>
       <Notify errorMessage={errorMessage} />
@@ -66,6 +68,10 @@ const App = () => {
         setError={notify}
         setToken={setToken}
         setPage={setPage}
+      />
+
+      <Recommend
+        show={page === 'recommend'}
       />
 
     </div>

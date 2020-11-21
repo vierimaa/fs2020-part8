@@ -11,8 +11,8 @@ export const ALL_AUTHORS = gql`
 `
 
 export const ALL_BOOKS = gql`
-  query allBooks {
-    allBooks {
+  query allBooks($filterByAuthor: String, $filterByGenre: String) {
+    allBooks(author: $filterByAuthor, genre: $filterByGenre) {
       title
       author{name}
       published
@@ -20,6 +20,16 @@ export const ALL_BOOKS = gql`
     }
   }
 `
+
+export const ME = gql`
+  query me {
+    me {
+      username
+      favoriteGenre
+    }
+  }
+`
+
 export const ADD_BOOK = gql`
   mutation addBook(
     $title: String!
